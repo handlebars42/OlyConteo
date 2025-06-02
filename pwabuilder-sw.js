@@ -1,18 +1,25 @@
-// This is the "Offline copy of assets" service worker
-
-const CACHE = "pwabuilder-offline";
-
-importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js');
-
-self.addEventListener("message", (event) => {
-  if (event.data && event.data.type === "SKIP_WAITING") {
-    self.skipWaiting();
-  }
-});
-
-workbox.routing.registerRoute(
-  new RegExp('/*'),
-  new workbox.strategies.StaleWhileRevalidate({
-    cacheName: CACHE
-  })
-);
+// Change this to your repository name
+var GHPATH = '/github-page-pwa';
+ 
+// Choose a different app prefix name
+var APP_PREFIX = 'gppwa_';
+ 
+// The version of the cache. Every time you change any of the files
+// you need to change this version (version_01, version_02…). 
+// If you don't change the version, the service worker will give your
+// users the old files!
+var VERSION = 'version_00';
+ 
+// The files to make available for offline use. make sure to add 
+// others to this list
+var URLS = [    
+  `${GHPATH}/`,
+  `${GHPATH}/index.html`,
+  `${GHPATH}/style.css`,
+  `${GHPATH}/css/olyinven.css`,
+  `${GHPATH}/controller/barcode.js`,
+  `${GHPATH}/controller/main.js`,
+  `${GHPATH}/lib/quagga.min.js`,
+  `${GHPATH}/lib/util.js`,
+  `${GHPATH}/model/Products.js`,
+]
