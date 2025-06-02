@@ -1,0 +1,21 @@
+{
+  "background_color": "#ffffff",
+  "description": "A simple website, built with Glitch. Remix it to get your own.",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "Oly Inventario",
+  "orientation": "portrait",
+  "scope": "/",
+  "short_name": "Oly Inventario",
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "categories": [],
+  "screenshots": [],
+    "icons": [
+    {
+      "src": "https://cdn.glitch.global/59063f53-5374-4fa6-afd1-1c5eb6b72768/pwa1.png?v=1704238736325",
+      "sizes": "512x512"
+    }
+  ],
+  "shortcuts": []
+}

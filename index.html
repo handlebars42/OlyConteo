@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" href="https://cdn.glitch.global/59063f53-5374-4fa6-afd1-1c5eb6b72768/pwa1.png?v=1704238736325" />
+    
+    <script type="module">
+      import 'https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate';
+
+      const el = document.createElement('pwa-update');
+      document.body.appendChild(el);
+    </script>
+
+    <title>OlyInven</title>
+
+    <!-- Meta tags for SEO and social sharing -->
+    <link rel="canonical" href="https://glitch-hello-website.glitch.me/" />
+    <meta
+      name="description"
+      content="OlyInven"
+    />
+    <meta name="robots" content="index,follow" />
+    <meta property="og:title" content="OlyInven" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://glitch-hello-website.glitch.me/" />
+    <meta
+      property="og:description"
+      content="OlyInven"
+    />
+    <meta
+      property="og:image"
+      content="https://cdn.glitch.com/605e2a51-d45f-4d87-a285-9410ad350515%2Fhello-website-social.png?v=1616712748147"
+    />
+    <meta name="twitter:card" content="summary" />
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-orange.min.css">
+    <link rel="stylesheet" href="css/olyinven.css">
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    
+    <script>
+    if('serviceWorker' in navigator){
+        navigator.serviceWorker.register('pwabuilder-sw.js')
+          .then(reg => console.log('service worker registered'))
+          .catch(err => console.log('service worker not registered', err));
+      }
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js" integrity="sha512-UnrKxsCMN9hFk7M56t4I4ckB4N/2HHi0w/7+B/1JsXIX3DmyBcsGpT3/BsuZMZf+6mAr0vP81syWtfynHJ69JA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.js" integrity="sha512-tkMtg2br+OytX7fpdDoK34wzSUc6JcJa7aOEYUKwlSAAtqTSYVLocV4BpLBIx3RS+h+Ch6W+2lVSzNxQx4yefw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  </head>
+  <body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+          <span class="mdl-layout-title">OlyInven</span>
+          <div class="mdl-layout-spacer"></div>
+        </div>
+      </header>
+      <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">OlyInven</span>
+        <nav class="mdl-navigation">
+          <a class="mdl-navigation__link" href="#" onclick="Products.writeToExcel()">Descargar archivo de Excel</a>
+          <a class="mdl-navigation__link" href="#" onclick="showAboutDialog()">Acerca de...</a>
+        </nav>
+      </div>
+      <main class="mdl-layout__content">
+        <div class="page-content" id="page-0">
+          <p class="mdl-typography--body-1">
+            Seleccione el archivo de Excel para el inventario
+          </p>
+          <button class="mdl-button mdl-js-button mdl-button--raised" id="button-select-file">
+            Cargar archivo
+          </button>
+          <span id="filename"></span>
+          <input type="file" id="excel-file-selector" class="mdl-textfield__input" style="display:none;">
+        </div>
+        <div class="page-content" id="page-1">
+          <div>
+            <div class="mdl-grid">
+                <div class="mdl-layout-spacer"></div>
+                <div class="mdl-cell mdl-cell--4-col">
+                  <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" id="scan">
+                    <i class="material-icons">view_in_ar</i>
+                  </button>
+                </div>
+                <div class="mdl-layout-spacer"></div>
+            </div>
+
+            <form action="#">
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="barcode" onclick="this.select()" autocomplete="off">
+                <label class="mdl-textfield__label" for="barcode">Codigo de barras</label>
+              </div>
+
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="count" autocomplete="off">
+                <label class="mdl-textfield__label" for="count" id="count-label">Conteo</label>
+              </div>
+              
+            </form>
+            <p class="mdl-typography--body-2" id="description">
+
+            </p>
+            
+            <ul id="searchList" class="mdl-list">
+            </ul>
+          </div>
+
+        </div>
+        <div class="page-content" id="page-2" style="display:none;">
+          <!--  <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" onclick="barcodeCancel()">
+              <i class="material-icons">arrow_back</i>
+            </button>
+          <div id="live-reader" style="width: 360px"></div> -->
+          <hr>
+          <video id="bar" autoplay style="width:100vw;height:240px;margin:0;object-fit:cover;"></video>
+          <div id="red-line" style="position:relative; background-color:red; height:5px;z-index:10;"></div>
+          <hr>
+          <button type="button" onclick="cancelarBarcode()" style="height:30px; margin-right:30px;">Cerrar lector</button>
+          <button type="button" onclick="capturarBarcode()" style="height:30px;">Capturar</button>
+
+          <canvas id="canvas1" hidden></canvas>
+          <img id="input" hidden/>
+        </div>
+      </main>
+      <dialog class="mdl-dialog" id="about-dialog">
+        <h4 class="mdl-dialog__title">OlyInven 2024.01.03</h4>
+        <div class="mdl-dialog__content">
+          <p>
+            (c) 2024
+            Luis Mendoza (dis7185@hotmail.com)
+          </p>
+        </div>
+        <div class="mdl-dialog__actions">
+          <button type="button" class="mdl-button" onclick="closeAboutDialog()">OK</button>
+        </div>
+      </dialog>
+    </div>
+    
+    <script src="lib/util.js"></script>
+    <script src="model/Products.js"></script>
+    <script src="controller/barcode.js"></script>
+    <script src="controller/main.js"></script>
+  </body>
+</html>
