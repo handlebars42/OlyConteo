@@ -3,17 +3,17 @@
   "description": "OlyConteo",
   "dir": "ltr",
   "display": "standalone",
-  "name": "OlyConteo",
+  "name": "OlyInven",
   "orientation": "portrait",
-  "scope": "/OlyConteo/",
-  "short_name": "OlyConteo",
-  "start_url": "/OlyConteo/",
+  "scope": "/OlyInven/",
+  "short_name": "OlyInven",
+  "start_url": "/OlyInven/",
   "theme_color": "#ffffff",
   "categories": [],
   "screenshots": [],
     "icons": [
     {
-      "src": "/OlyConteo/OlyConteo.png",
+      "src": "/OlyInven/OlyInven.png",
       "sizes": "512x512"
     }
   ],
