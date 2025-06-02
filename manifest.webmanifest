@@ -7,7 +7,7 @@
   "orientation": "portrait",
   "scope": "/OlyInven/",
   "short_name": "OlyInven",
-  "start_url": "/OlyInven/",
+  "start_url": "/OlyInven/index.html",
   "theme_color": "#ffffff",
   "categories": [],
   "screenshots": [],
