@@ -15,7 +15,6 @@ var VERSION = 'version_00';
 var URLS = [    
   `${GHPATH}/`,
   `${GHPATH}/index.html`,
-  `${GHPATH}/style.css`,
   `${GHPATH}/css/olyinven.css`,
   `${GHPATH}/controller/barcode.js`,
   `${GHPATH}/controller/main.js`,
