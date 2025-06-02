@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <link rel="manifest" href="/OlyInven/manifest.json" />
-    <link rel="icon" href="/OlyInven/OlyInven.png" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" href="OlyInven.png" />
 
     <title>OlyInven</title>
 
@@ -15,7 +15,7 @@
       content="OlyInven"
     />
     <meta name="robots" content="index,follow" />
-    <meta property="og:title" content="OlyConteo" />
+    <meta property="og:title" content="OlyInven" />
     <meta property="og:type" content="article" /
     <meta
       property="og:description"
@@ -30,7 +30,7 @@
     
     <script>
     if('serviceWorker' in navigator){
-        navigator.serviceWorker.register('/OlyInven/pwabuilder-sw.js')
+        navigator.serviceWorker.register('pwabuilder-sw.js')
           .then(reg => console.log('service worker registered'))
           .catch(err => console.log('service worker not registered', err));
       }
