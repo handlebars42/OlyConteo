@@ -3,8 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="manifest" href="manifest.json" />
+
+    <link rel="canonical" href="https://handlebars42.github.io/OlyInven/" />
+    <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" href="OlyInven.png" />
 
     <title>OlyInven</title>
@@ -30,7 +31,7 @@
     
     <script>
     if('serviceWorker' in navigator){
-        navigator.serviceWorker.register('pwabuilder-sw.js')
+        navigator.serviceWorker.register('pwa-sw.js')
           .then(reg => console.log('service worker registered'))
           .catch(err => console.log('service worker not registered', err));
       }
