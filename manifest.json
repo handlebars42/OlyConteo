@@ -1,19 +1,19 @@
 {
   "background_color": "#ffffff",
-  "description": "A simple website, built with Glitch. Remix it to get your own.",
+  "description": "OlyConteo",
   "dir": "ltr",
   "display": "standalone",
-  "name": "Oly Inventario",
+  "name": "OlyConteo",
   "orientation": "portrait",
-  "scope": "/",
-  "short_name": "Oly Inventario",
-  "start_url": "/",
+  "scope": "/OlyConteo/",
+  "short_name": "OlyConteo",
+  "start_url": "/OlyConteo/",
   "theme_color": "#ffffff",
   "categories": [],
   "screenshots": [],
     "icons": [
     {
-      "src": "https://cdn.glitch.global/59063f53-5374-4fa6-afd1-1c5eb6b72768/pwa1.png?v=1704238736325",
+      "src": "/OlyConteo/OlyConteo.png",
       "sizes": "512x512"
     }
   ],
